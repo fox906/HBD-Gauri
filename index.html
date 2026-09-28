@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Gauri ✨</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Animated Canvas -->
+  <canvas id="heartCanvas"></canvas>
+  <div class="bg-glow"></div>
+
+  <!-- Floating Audio / Vibe Toggle -->
+  <div class="audio-toggle" onclick="toggleVibe(this)">
+    <span class="icon">🎵</span> <span class="vibe-text">Click for Birthday Vibe</span>
+  </div>
+
+  <!-- SECTION 1: HERO -->
+  <section class="hero">
+    <div class="badge">A Special Journey ✨</div>
+    <h1 class="title">Happy Birthday, Gauri! 🎉</h1>
+    <p class="subtitle">585 km ki doori hai, par ye khas panna sirf tumhare liye...</p>
+    <button class="primary-btn" onclick="startCelebration()">Explore My Heart ❤️</button>
+  </section>
+
+  <!-- MAIN STORY CONTENT -->
+  <section id="story" class="content-section">
+    
+    <!-- SECTION 2: DISTANCE BADGE -->
+    <div class="distance-card">
+      <span class="distance-num">585 KM</span>
+      <p>Distance maps par ho sakti hai, par khayal har waqt paas hi rehta hai.</p>
+    </div>
+
+    <!-- SECTION 3: CARING & CUTE MOMENTS GRID -->
+    <h2 class="section-heading">Choti Choti Baatein Jo Tumhe Khas Banati Hain ✨</h2>
+    <div class="grid-container">
+      <div class="feature-card">
+        <h3>🌙 Tumhara Khayal</h3>
+        <p>Late night jagna band karo aur health ka dhyan rakha karo... tumhari thakan mujhe achhi nahi lagti.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔥 Tumhara Nakhra & Gussa</h3>
+        <p>Tum chahe kitna bhi gussa ho jao ya moody ho jao, mere paas tumhare saare mood swings handle karne ka patience hai.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💫 Tumhari Presence</h3>
+        <p>Behas tumse hazar baar kar sakta hu, par din ke end mein tumhare bina sukoon nahi milta.</p>
+      </div>
+    </div>
+
+    <!-- NEW SECTION 4: INTERACTIVE REASONS (CLICK TO REVEAL) -->
+    <h2 class="section-heading">Tap To Unlock Hidden Thoughts 🗝️</h2>
+    <div class="accordion-container">
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+          <span>01. Tumhari Voice & Laugh</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="accordion-body">
+          Jab tum kisi baat par bina wajah hasti ho ya nakhre dikhati ho, wo moment din ka sabse relaxed part hota hai.
+        </div>
+      </div>
+
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+          <span>02. My Favorite Duty</span>
+        </div>
+        <div class="accordion-body">
+          Tumhara dhyan rakhna mera favorite kaam hai. Muje pareshan mat kiya karo time par khana khake aur so kar.
+        </div>
+      </div>
+
+      <div class="accordion-item" onclick="toggleAccordion(this)">
+        <div class="accordion-header">
+          <span>03. The Unspoken Care</span>
+        </div>
+        <div class="accordion-body">
+          Tum chahe kitna bhi bol lo ki attachment nahi chahiye, mujhe pata hai tum kitni care karti ho. Wo dikhta hai.
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW SECTION 5: SPECIAL PROMISE COUPONS -->
+    <h2 class="section-heading">Birthday Promises & Vouchers 🎁</h2>
+    <p class="sub-text">Click on any card to redeem your birthday promise:</p>
+    <div class="coupons-grid">
+      <div class="coupon-card" onclick="claimCoupon('Infinite Chai & Long Talks', 'Valid whenever we meet next. No rush, no complaints.')">
+        <div class="coupon-tag">Voucher 01</div>
+        <h4>☕ Infinite Chai Date</h4>
+        <p>Tap to reveal details</p>
+      </div>
+
+      <div class="coupon-card" onclick="claimCoupon('100% Patience Pass', 'Whenever you are moody, I will just listen and stay calm.')">
+        <div class="coupon-tag">Voucher 02</div>
+        <h4>🛡️ Zero Argument Day</h4>
+        <p>Tap to reveal details</p>
+      </div>
+
+      <div class="coupon-card" onclick="claimCoupon('Always In Your Corner', 'No matter how tough the day is, I am always here for you.')">
+        <div class="coupon-tag">Voucher 03</div>
+        <h4>✨ Unconditional Safe Space</h4>
+        <p>Tap to reveal details</p>
+      </div>
+    </div>
+
+    <!-- SECTION 6: DEEP POETIC LETTER -->
+    <div class="letter-card">
+      <h2 class="letter-title">A Special Note For You 💌</h2>
+      <p class="poetic-text">
+        Suno Gauri,<br><br>
+        Har baar labzon mein zahir karna zaroori nahi hota, par aaj tumhara din hai toh itna kehna banta hai... Tum jaisi bhi ho—chahe gussa, mood swings, ya wo tumhari befaltu ki behas—har shaqshiyat tumhari mere liye khas hai.<br><br>
+        Mera haq sirf tumhare acche mood par nahi, tumhare kharab mood par bhi hai. 585 km door hu, par dil se hamesha yehi dua hai ki tum aage badho, muskuraati raho aur hamesha apni shart par jiyo.<br><br>
+        <strong>Happy Birthday, Gauri! ✨</strong>
+      </p>
+    </div>
+
+    <!-- SECTION 7: INTERACTIVE BIRTHDAY WISH & FIREWORKS -->
+    <div class="wish-container">
+      <h3>Make A Birthday Wish 🎂</h3>
+      <p>Close your eyes, make a wish, and click below!</p>
+      <button class="wish-btn" onclick="makeWish()">Pop Up Celebrations 🎉</button>
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
