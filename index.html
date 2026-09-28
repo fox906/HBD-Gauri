@@ -3,388 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Gauri ✨</title>
-  
-  <!-- Canvas Confetti Library -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
+  <title>Happy Birthday, My Precious Gauri ✨</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap');
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      user-select: none; /* Text selection disable kar diya taaki click smoothly chale */
+      -webkit-user-select: none;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #080c14 !important;
-      color: #ffffff !important;
-      text-align: center;
-      overflow-x: hidden;
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: #0b0712 !important; 
+      color: #f8fafc !important; 
+      text-align: center; 
+      overflow-x: hidden; 
       position: relative;
     }
 
-    #heartCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
+    /* Ambient Background Glow */
+    .bg-glow { 
+      position: fixed; 
+      top: 30%; 
+      left: 50%; 
+      transform: translate(-50%, -50%); 
+      width: 450px; 
+      height: 450px; 
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.18) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(0,0,0,0) 70%); 
+      z-index: 0; 
+      pointer-events: none !important; 
     }
 
-    .bg-glow {
-      position: fixed;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(244, 63, 94, 0.2) 0%, rgba(0,0,0,0) 70%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .audio-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      z-index: 100;
-      transition: all 0.3s ease;
-      color: #fff;
-    }
-
-    .audio-toggle:hover {
-      background: rgba(244, 63, 94, 0.2);
-      border-color: #f43f5e;
-    }
-
-    .hero {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .badge {
-      background: rgba(244, 63, 94, 0.15);
-      color: #fb7185;
-      border: 1px solid rgba(244, 63, 94, 0.3);
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      margin-bottom: 15px;
-    }
-
-    .title {
-      font-size: 2.8rem;
-      background: linear-gradient(45deg, #f43f5e, #fb7185, #ffd166);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #94a3b8;
-      margin-bottom: 35px;
-    }
-
-    .primary-btn, .wish-btn {
-      padding: 14px 36px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 30px;
-      background: linear-gradient(45deg, #f43f5e, #e11d48);
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.4);
+    /* Audio Toggle */
+    .audio-toggle { 
+      position: fixed; 
+      top: 20px; 
+      right: 20px; 
+      background: rgba(255, 255, 255, 0.08); 
+      backdrop-filter: blur(12px); 
+      border: 1px solid rgba(244, 63, 94, 0.3); 
+      padding: 10px 20px; 
+      border-radius: 30px; 
+      font-size: 0.85rem; 
+      cursor: pointer; 
+      z-index: 999; 
+      color: #fda4af; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
       transition: all 0.3s ease;
     }
-
-    .primary-btn:hover, .wish-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 15px 30px rgba(244, 63, 94, 0.6);
+    .audio-toggle:hover { 
+      background: rgba(244, 63, 94, 0.25); 
+      color: #fff; 
     }
 
-    .content-section {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 60px 20px;
+    /* Hero Section */
+    .hero { 
+      position: relative; 
+      z-index: 10; 
+      height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 0 20px; 
+    }
+    .badge { 
+      background: rgba(244, 63, 94, 0.2); 
+      color: #f472b6; 
+      border: 1px solid rgba(244, 63, 94, 0.4); 
+      padding: 8px 22px; 
+      border-radius: 30px; 
+      font-size: 0.95rem; 
+      margin-bottom: 20px; 
+      font-weight: 500; 
+    }
+    .title { 
+      font-family: 'Dancing Script', cursive; 
+      font-size: 4.2rem; 
+      background: linear-gradient(45deg, #fb7185, #f43f5e, #fef08a); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      margin-bottom: 10px; 
+      line-height: 1.2; 
+    }
+    .subtitle { 
+      font-size: 1.15rem; 
+      color: #cbd5e1; 
+      margin-bottom: 40px; 
+      font-weight: 300; 
+      max-width: 600px; 
+      line-height: 1.6; 
     }
 
-    .distance-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 25px;
-      border-radius: 20px;
-      margin-bottom: 50px;
+    /* Interactive Buttons */
+    .btn-action { 
+      padding: 14px 36px; 
+      font-size: 1.05rem; 
+      font-weight: 600; 
+      border: none; 
+      border-radius: 50px; 
+      background: linear-gradient(45deg, #f43f5e, #e11d48, #9333ea); 
+      color: white; 
+      cursor: pointer; 
+      box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4); 
+      transition: all 0.25s ease; 
+      position: relative; 
+      z-index: 20; 
+      display: inline-block;
+    }
+    .btn-action:hover { 
+      transform: translateY(-3px) scale(1.03); 
+      box-shadow: 0 14px 30px rgba(244, 63, 94, 0.6); 
+    }
+    .btn-action:active { 
+      transform: translateY(1px) scale(0.98); 
     }
 
-    .distance-num {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #fb7185;
-      display: block;
-      margin-bottom: 5px;
+    .content-section { 
+      position: relative; 
+      z-index: 10; 
+      max-width: 820px; 
+      margin: 0 auto; 
+      padding: 60px 20px; 
     }
 
-    .section-heading {
-      font-size: 1.6rem;
-      margin-bottom: 25px;
-      color: #f1f5f9;
+    /* Distance Card */
+    .distance-card { 
+      background: rgba(255, 255, 255, 0.03); 
+      backdrop-filter: blur(10px); 
+      border: 1px solid rgba(244, 63, 94, 0.25); 
+      padding: 30px; 
+      border-radius: 24px; 
+      margin-bottom: 50px; 
+    }
+    .distance-num { 
+      font-size: 2.5rem; 
+      font-weight: 700; 
+      color: #fb7185; 
+      display: block; 
+      margin-bottom: 5px; 
     }
 
-    .sub-text {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-      margin-top: -15px;
+    .section-heading { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.8rem; 
+      margin-bottom: 25px; 
+      color: #f8fafc; 
+    }
+    .sub-text { 
+      color: #94a3b8; 
+      font-size: 0.95rem; 
+      margin-bottom: 25px; 
+      margin-top: -15px; 
     }
 
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-bottom: 50px;
+    /* Interactive Timeline */
+    .timeline { 
+      position: relative; 
+      margin: 30px 0 50px; 
+      text-align: left; 
+      padding-left: 20px; 
+      border-left: 2px dashed rgba(244, 63, 94, 0.3); 
+    }
+    .timeline-item { 
+      position: relative; 
+      margin-bottom: 30px; 
+      padding-left: 25px; 
+    }
+    .timeline-item::before { 
+      content: '✨'; 
+      position: absolute; 
+      left: -32px; 
+      top: -2px; 
+      background: #0b0712; 
+    }
+    .timeline-date { 
+      font-size: 0.85rem; 
+      color: #fb7185; 
+      font-weight: 600; 
+    }
+    .timeline-title { 
+      font-size: 1.1rem; 
+      color: #f1f5f9; 
+      font-weight: 600; 
+      margin: 3px 0; 
+    }
+    .timeline-desc { 
+      font-size: 0.95rem; 
+      color: #94a3b8; 
+      line-height: 1.6; 
     }
 
-    .feature-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 20px;
-      border-radius: 16px;
-      text-align: left;
-      transition: transform 0.3s ease;
+    /* Interactive Box Styles */
+    .box-card { 
+      background: rgba(255, 255, 255, 0.03); 
+      border: 1px solid rgba(244, 63, 94, 0.25); 
+      padding: 30px 20px; 
+      border-radius: 24px; 
+      margin-bottom: 50px; 
     }
 
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(244, 63, 94, 0.4);
+    /* Reasons Counter */
+    .counter-number { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      color: #c084fc; 
+      font-family: 'Dancing Script', cursive; 
+    }
+    .reason-display { 
+      font-size: 1.05rem; 
+      color: #f1f5f9; 
+      margin: 15px 0; 
+      min-height: 50px; 
+      font-style: italic; 
     }
 
-    .feature-card h3 {
-      font-size: 1.1rem;
-      color: #fb7185;
-      margin-bottom: 10px;
+    /* Cake Interaction */
+    .cake { 
+      font-size: 4.5rem; 
+      cursor: pointer; 
+      display: inline-block; 
+      margin: 15px 0; 
+      transition: transform 0.2s ease;
+    }
+    .cake:hover { 
+      transform: scale(1.15); 
     }
 
-    .feature-card p {
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      line-height: 1.6;
+    /* Accordion Thoughts */
+    .accordion-container { 
+      margin-bottom: 50px; 
+      text-align: left; 
+    }
+    .accordion-item { 
+      background: rgba(255, 255, 255, 0.03); 
+      border: 1px solid rgba(255, 255, 255, 0.1); 
+      border-radius: 16px; 
+      margin-bottom: 12px; 
+      cursor: pointer; 
+      padding: 18px 22px; 
+      transition: all 0.3s ease; 
+    }
+    .accordion-item:hover { 
+      border-color: #f43f5e; 
+      background: rgba(244, 63, 94, 0.06); 
+    }
+    .accordion-header { 
+      display: flex; 
+      justify-content: space-between; 
+      font-weight: 600; 
+      color: #f1f5f9; 
+    }
+    .accordion-body { 
+      display: none; 
+      margin-top: 12px; 
+      color: #94a3b8; 
+      font-size: 0.95rem; 
+      line-height: 1.6; 
+      border-top: 1px dashed rgba(255,255,255,0.1); 
+      padding-top: 10px; 
     }
 
-    .accordion-container {
-      margin-bottom: 50px;
-      text-align: left;
+    /* Envelope */
+    .envelope-box { 
+      background: rgba(255, 255, 255, 0.04); 
+      border: 1px solid rgba(244, 63, 94, 0.4); 
+      border-radius: 24px; 
+      padding: 30px; 
+      cursor: pointer; 
+      margin-bottom: 50px; 
+      transition: all 0.3s ease; 
+    }
+    .envelope-box:hover { 
+      border-color: #f43f5e; 
+      background: rgba(244, 63, 94, 0.08); 
     }
 
-    .accordion-item {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    /* Vouchers */
+    .coupons-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+      gap: 18px; 
+      margin-bottom: 50px; 
     }
-
-    .accordion-header {
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      color: #f1f5f9;
+    .coupon-card { 
+      background: rgba(255,255,255,0.03); 
+      border: 1px dashed rgba(244, 63, 94, 0.4); 
+      border-radius: 20px; 
+      padding: 20px; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
     }
-
-    .accordion-body {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 20px;
-      color: #94a3b8;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      transition: all 0.3s ease;
+    .coupon-card:hover { 
+      border-style: solid; 
+      border-color: #f43f5e; 
+      background: rgba(244, 63, 94, 0.08); 
     }
-
-    .accordion-item.active {
-      border-color: rgba(244, 63, 94, 0.5);
-      background: rgba(244, 63, 94, 0.08);
-    }
-
-    .accordion-item.active .accordion-body {
-      max-height: 120px;
-      padding-bottom: 16px;
-    }
-
-    .coupons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-      margin-bottom: 50px;
-    }
-
-    .coupon-card {
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px dashed rgba(244, 63, 94, 0.4);
-      border-radius: 16px;
-      padding: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .coupon-card:hover {
-      transform: scale(1.04);
-      border-style: solid;
-      box-shadow: 0 10px 25px rgba(244, 63, 94, 0.2);
-    }
-
-    .coupon-tag {
-      font-size: 0.75rem;
-      color: #fb7185;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .coupon-card h4 {
-      font-size: 1.05rem;
-      color: #ffffff;
-      margin-bottom: 6px;
-    }
-
-    .coupon-card p {
-      font-size: 0.8rem;
-      color: #94a3b8;
-    }
-
-    .letter-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 35px;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      margin-bottom: 50px;
-      text-align: left;
-    }
-
-    .letter-title {
-      color: #fb7185;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-    }
-
-    .poetic-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      line-height: 1.9;
-      color: #f1f5f9;
-    }
-
-    .wish-container {
-      padding: 40px 20px;
-      background: rgba(244, 63, 94, 0.08);
-      border-radius: 20px;
-      border: 1px dashed rgba(244, 63, 94, 0.3);
-    }
-
-    .wish-container h3 {
-      margin-bottom: 8px;
-      font-size: 1.4rem;
-    }
-
-    .wish-container p {
-      color: #94a3b8;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
+    .coupon-tag { 
+      font-size: 0.75rem; 
+      color: #fb7185; 
+      text-transform: uppercase; 
+      font-weight: 600; 
+      margin-bottom: 6px; 
     }
   </style>
 </head>
 <body>
 
-  <canvas id="heartCanvas"></canvas>
   <div class="bg-glow"></div>
 
-  <div class="audio-toggle" onclick="toggleVibe(this)">
-    <span class="icon">🎵</span> <span class="vibe-text">Click for Birthday Vibe</span>
+  <div class="audio-toggle" id="vibeBtn">
+    <span>🎵 Click For Soft Birthday Vibe</span>
   </div>
 
   <section class="hero">
-    <div class="badge">A Special Journey ✨</div>
-    <h1 class="title">Happy Birthday, Gauri! 🎉</h1>
-    <p class="subtitle">585 km ki doori hai, par ye khas panna sirf tumhare liye...</p>
-    <button class="primary-btn" onclick="startCelebration()">Explore My Heart ❤️</button>
+    <div class="badge">A Purely Dedicated Page ✨</div>
+    <h1 class="title">Happy Birthday, Gauri! 🌹</h1>
+    <p class="subtitle">Dooriyan kilometer mein count hoti hain, par meri khwahishon aur khayalon mein tum hamesha sabse kareeb rehti ho...</p>
+    <button class="btn-action" id="enterBtn">Enter My Heart ❤️</button>
   </section>
 
   <section id="story" class="content-section">
     
+    <!-- Distance Card -->
     <div class="distance-card">
       <span class="distance-num">585 KM</span>
-      <p>Distance maps par ho sakti hai, par khayal har waqt paas hi rehta hai.</p>
+      <p style="color: #cbd5e1; font-size: 1rem;">Dooriyan chahe kitni bhi badi ho, ye rishta aur parwah unse kahin zyada gehra hai.</p>
     </div>
 
-    <h2 class="section-heading">Choti Choti Baatein Jo Tumhe Khas Banati Hain ✨</h2>
-    <div class="grid-container">
-      <div class="feature-card">
-        <h3>🌙 Tumhara Khayal</h3>
-        <p>Late night jagna band karo aur health ka dhyan rakha karo... tumhari thakan mujhe achhi nahi lagti.</p>
+    <!-- Virtual Cake -->
+    <div class="box-card">
+      <h2 class="section-heading">Make A Wish & Blow Candle 🎂</h2>
+      <p class="sub-text">Aankhein band karo, ek pyaari si wish maango aur candle par tap karo!</p>
+      <div class="cake" id="cakeBtn">🕯️🎂</div>
+      <p id="cakeMsg" style="color: #fb7185; font-weight: 600; display: none; font-size: 1.1rem; margin-top: 10px;">
+        Wish made! May your life be filled with endless smiles! ✨
+      </p>
+    </div>
+
+    <!-- Interactive Memory Timeline -->
+    <h2 class="section-heading">Hamari Yaadein & Safar 💫</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">Pehli Baatchaat</div>
+        <div class="timeline-title">Jahan Se Shuruat Huyi</div>
+        <div class="timeline-desc">Choti si baatchaat se shuru hua ye safar kab itna khas ban gaya, pata hi nahi chala.</div>
       </div>
-      <div class="feature-card">
-        <h3>🔥 Tumhara Nakhra & Gussa</h3>
-        <p>Tum chahe kitna bhi gussa ho jao ya moody ho jao, mere paas tumhare saare mood swings handle karne ka patience hai.</p>
+      <div class="timeline-item">
+        <div class="timeline-date">Late Night Talks</div>
+        <div class="timeline-title">Bina Wajah Ki Behas & Care</div>
+        <div class="timeline-desc">Raat ko late tak jagna, tumhara nakhra dikhana aur mera tumhein chup chap sunna... favorite habits ban gayi.</div>
       </div>
-      <div class="feature-card">
-        <h3>💫 Tumhari Presence</h3>
-        <p>Behas tumse hazar baar kar sakta hu, par din ke end mein tumhare bina sukoon nahi milta.</p>
+      <div class="timeline-item">
+        <div class="timeline-date">Aaj Ka Khas Din</div>
+        <div class="timeline-title">Tumhara Special Birthday</div>
+        <div class="timeline-desc">Aaj ke din bas itna kehna hai ki tum jaisi ho, mere liye bilkul perfect ho.</div>
       </div>
     </div>
 
+    <!-- Reasons Counter -->
+    <div class="box-card">
+      <h2 class="section-heading" style="margin-bottom: 10px;">Why You Mean So Much To Me ✨</h2>
+      <div class="counter-number" id="reasonCounter">1</div>
+      <div class="reason-display" id="reasonText">"Tumhari ek choti si smile mera pura din accha kar deti hai."</div>
+      <button class="btn-action" id="nextReasonBtn" style="padding: 10px 24px; font-size: 0.9rem;">Next Reason 💖</button>
+    </div>
+
+    <!-- Mood Generator -->
+    <div class="box-card">
+      <h2 class="section-heading" style="margin-bottom: 5px;">Jab Tumhara Mood Kharab Ho 🌧️</h2>
+      <p class="sub-text">Jab bhi sad feel karo ya stressed ho, is button par click karna:</p>
+      <div class="reason-display" id="moodMsg">"Suno! Zyada mat socha karo, main hamesha hu tumhare paas listening mode mein."</div>
+      <button class="btn-action" id="comfortBtn">Get Instant Comfort 💌</button>
+    </div>
+
+    <!-- Accordion Thoughts -->
     <h2 class="section-heading">Tap To Unlock Hidden Thoughts 🗝️</h2>
     <div class="accordion-container">
-      <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-item" onclick="toggleAcc(this)">
         <div class="accordion-header">
           <span>01. Tumhari Voice & Laugh</span>
-          <span class="acc-icon">+</span>
+          <span>+</span>
         </div>
         <div class="accordion-body">
           Jab tum kisi baat par bina wajah hasti ho ya nakhre dikhati ho, wo moment din ka sabse relaxed part hota hai.
         </div>
       </div>
 
-      <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-item" onclick="toggleAcc(this)">
         <div class="accordion-header">
           <span>02. My Favorite Duty</span>
-          <span class="acc-icon">+</span>
+          <span>+</span>
         </div>
         <div class="accordion-body">
           Tumhara dhyan rakhna mera favorite kaam hai. Mujhe pareshan mat kiya karo time par khana khake aur so kar.
         </div>
       </div>
 
-      <div class="accordion-item" onclick="toggleAccordion(this)">
+      <div class="accordion-item" onclick="toggleAcc(this)">
         <div class="accordion-header">
           <span>03. The Unspoken Care</span>
-          <span class="acc-icon">+</span>
+          <span>+</span>
         </div>
         <div class="accordion-body">
           Tum chahe kitna bhi bol lo ki attachment nahi chahiye, mujhe pata hai tum kitni care karti ho. Wo dikhta hai.
@@ -392,143 +414,96 @@
       </div>
     </div>
 
-    <h2 class="section-heading">Birthday Promises & Vouchers 🎁</h2>
-    <p class="sub-text">Click on any card to redeem your birthday promise:</p>
-    <div class="coupons-grid">
-      <div class="coupon-card" onclick="claimCoupon('Infinite Chai & Long Talks', 'Valid whenever we meet next. No rush, no complaints.')">
-        <div class="coupon-tag">Voucher 01</div>
-        <h4>☕ Infinite Chai Date</h4>
-        <p>Tap to reveal details</p>
-      </div>
-
-      <div class="coupon-card" onclick="claimCoupon('100% Patience Pass', 'Whenever you are moody, I will just listen and stay calm.')">
-        <div class="coupon-tag">Voucher 02</div>
-        <h4>🛡️ Zero Argument Day</h4>
-        <p>Tap to reveal details</p>
-      </div>
-
-      <div class="coupon-card" onclick="claimCoupon('Always In Your Corner', 'No matter how tough the day is, I am always here for you.')">
-        <div class="coupon-tag">Voucher 03</div>
-        <h4>✨ Unconditional Safe Space</h4>
-        <p>Tap to reveal details</p>
-      </div>
-    </div>
-
-    <div class="letter-card">
-      <h2 class="letter-title">A Special Note For You 💌</h2>
-      <p class="poetic-text">
+    <!-- Envelope Hand-Written Letter -->
+    <h2 class="section-heading">A Special Envelope For You ✉️</h2>
+    <div class="envelope-box" id="envelopeBtn">
+      <h3 style="color: #fb7185; font-family: 'Playfair Display', serif; margin-bottom: 5px;">Tap to Unseal My Letter 💌</h3>
+      <p style="color: #94a3b8; font-size: 0.85rem;" id="envSub">Click anywhere to open this heart-felt note</p>
+      <div id="letterBody" style="display: none; margin-top: 20px; text-align: left; font-family: 'Playfair Display', serif; font-size: 1.15rem; line-height: 1.8; color: #f8fafc; border-top: 1px dashed rgba(244,63,94,0.3); padding-top: 20px;">
         Suno Gauri,<br><br>
         Har baar labzon mein zahir karna zaroori nahi hota, par aaj tumhara din hai toh itna kehna banta hai... Tum jaisi bhi ho—chahe gussa, mood swings, ya wo tumhari befaltu ki behas—har shaqshiyat tumhari mere liye khas hai.<br><br>
         Mera haq sirf tumhare acche mood par nahi, tumhare kharab mood par bhi hai. 585 km door hu, par dil se hamesha yehi dua hai ki tum aage badho, muskuraati raho aur hamesha apni shart par jiyo.<br><br>
         <strong>Happy Birthday, Gauri! ✨</strong>
-      </p>
+      </div>
     </div>
 
-    <div class="wish-container">
-      <h3>Make A Birthday Wish 🎂</h3>
-      <p>Close your eyes, make a wish, and click below!</p>
-      <button class="wish-btn" onclick="makeWish()">Pop Up Celebrations 🎉</button>
+    <!-- Vouchers -->
+    <h2 class="section-heading">Birthday Promises & Vouchers 🎁</h2>
+    <p class="sub-text">Click on any card to redeem your birthday promise:</p>
+    <div class="coupons-grid">
+      <div class="coupon-card" onclick="alert('☕ VOUCHER UNLOCKED: Infinite Chai Date\n\nValid whenever we meet next. No rush, no complaints.')">
+        <div class="coupon-tag">Voucher 01</div>
+        <h4>☕ Infinite Chai Date</h4>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top:4px;">Tap to reveal details</p>
+      </div>
+
+      <div class="coupon-card" onclick="alert('🛡️ VOUCHER UNLOCKED: Zero Argument Day\n\nWhenever you are moody, I will just listen and stay calm.')">
+        <div class="coupon-tag">Voucher 02</div>
+        <h4>🛡️ Zero Argument Day</h4>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top:4px;">Tap to reveal details</p>
+      </div>
+
+      <div class="coupon-card" onclick="alert('✨ VOUCHER UNLOCKED: Unconditional Safe Space\n\nNo matter how tough the day is, I am always here for you.')">
+        <div class="coupon-tag">Voucher 03</div>
+        <h4>✨ Unconditional Safe Space</h4>
+        <p style="font-size:0.85rem; color:#94a3b8; margin-top:4px;">Tap to reveal details</p>
+      </div>
     </div>
 
   </section>
 
   <script>
-    const canvas = document.getElementById('heartCanvas');
-    const ctx = canvas.getContext('2d');
+    // Event Listeners strictly attached via JS
+    document.getElementById('enterBtn').addEventListener('click', function() {
+      document.getElementById('story').scrollIntoView({ behavior: 'smooth' });
+    });
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    document.getElementById('vibeBtn').addEventListener('click', function() {
+      this.querySelector('span').innerText = "✨ Romantic Vibe Active ✨";
+    });
 
-    const hearts = [];
-    for (let i = 0; i < 25; i++) {
-      hearts.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 8 + 4,
-        speedY: Math.random() * 1 + 0.5,
-        opacity: Math.random() * 0.5 + 0.2
-      });
-    }
+    document.getElementById('cakeBtn').addEventListener('click', function() {
+      this.innerText = '🎉🎂';
+      document.getElementById('cakeMsg').style.display = 'block';
+    });
 
-    function animateHearts() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      hearts.forEach(h => {
-        ctx.fillStyle = `rgba(244, 63, 94, ${h.opacity})`;
-        ctx.beginPath();
-        ctx.arc(h.x, h.y, h.size, 0, Math.PI * 2);
-        ctx.fill();
+    const reasons = [
+      "Tumhari ek choti si smile mera pura din accha kar deti hai.",
+      "Tumhara nakhra aur gussa dono bohot cute lagte hain.",
+      "Tum chahe kitna bhi lad lo, tumhari care karne mein jo sukoon hai wo kahi nahi.",
+      "Tumhari voice sunkar saara stress gayab ho jata hai.",
+      "Tum mere liye hamesha sabse khas rahogi, chahe kitni bhi doori ho."
+    ];
+    let currentReason = 0;
+    document.getElementById('nextReasonBtn').addEventListener('click', function() {
+      currentReason = (currentReason + 1) % reasons.length;
+      document.getElementById('reasonCounter').innerText = currentReason + 1;
+      document.getElementById('reasonText').innerText = `"${reasons[currentReason]}"`;
+    });
 
-        h.y -= h.speedY;
-        if (h.y < -10) {
-          h.y = canvas.height + 10;
-          h.x = Math.random() * canvas.width;
-        }
-      });
+    const comfortMsgs = [
+      "Suno! Zyada mat socha karo, main hamesha hu tumhare paas listening mode mein.",
+      "Gussa ya sad hone par pehle geheri saans lo, fir mujhe pareshan karna shuru karo! 😉",
+      "Tum strong ho, samajhdar ho... choti baaton ko dil par mat liya karo ✨",
+      "Khana time par khaya ya nahi? Pehle khana khao, fir baaki kaam karna!"
+    ];
+    document.getElementById('comfortBtn').addEventListener('click', function() {
+      const randomMsg = comfortMsgs[Math.floor(Math.random() * comfortMsgs.length)];
+      document.getElementById('moodMsg').innerText = `"${randomMsg}"`;
+    });
 
-      requestAnimationFrame(animateHearts);
-    }
-    animateHearts();
+    document.getElementById('envelopeBtn').addEventListener('click', function() {
+      document.getElementById('letterBody').style.display = 'block';
+      document.getElementById('envSub').style.display = 'none';
+    });
 
-    function startCelebration() {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-
-      document.getElementById('story').scrollIntoView({ 
-        behavior: 'smooth' 
-      });
-    }
-
-    function toggleAccordion(element) {
-      const isActive = element.classList.contains('active');
-      document.querySelectorAll('.accordion-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      if (!isActive) {
-        element.classList.add('active');
+    function toggleAcc(element) {
+      const body = element.querySelector('.accordion-body');
+      const isVisible = body.style.display === 'block';
+      document.querySelectorAll('.accordion-body').forEach(b => b.style.display = 'none');
+      if (!isVisible) {
+        body.style.display = 'block';
       }
-    }
-
-    function claimCoupon(title, detail) {
-      confetti({
-        particleCount: 50,
-        spread: 50,
-        origin: { y: 0.6 }
-      });
-      alert(`🎟️ VOUCHER UNLOCKED: ${title}\n\n"${detail}"`);
-    }
-
-    function toggleVibe(btn) {
-      confetti({
-        particleCount: 30,
-        spread: 40,
-        origin: { y: 0.1 }
-      });
-      btn.querySelector('.vibe-text').innerText = "Vibe Active ✨";
-    }
-
-    function makeWish() {
-      var count = 250;
-      var defaults = { origin: { y: 0.7 } };
-
-      function fire(particleRatio, opts) {
-        confetti(Object.assign({}, defaults, opts, {
-          particleCount: Math.floor(count * particleRatio)
-        }));
-      }
-
-      fire(0.25, { spread: 26, startVelocity: 55 });
-      fire(0.2, { spread: 60 });
-      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
-      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
-      fire(0.1, { spread: 120, startVelocity: 45 });
     }
   </script>
 </body>
